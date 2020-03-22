@@ -18,7 +18,7 @@ passport.deserializeUser((userID, done) => {
 const GSOptions = {
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,
-    callbackURL: "/auth/google/callback",
+    callbackURL: "/auth/callback",
     proxy: true // Trusts Proxy allowing us to use https over heroku proxy server
 };
 

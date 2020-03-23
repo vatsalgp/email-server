@@ -1,4 +1,4 @@
-const app = require("express")();
+const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
@@ -6,6 +6,7 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const keys = require("./config/keys");
 const router = require("./routes");
+const app = express();
 
 //Mongoose Setup
 const mongoOptions = {

@@ -31,4 +31,15 @@ app.use(passport.session());
 //Route Handler
 router(app);
 
+if (process.env.NODE_ENV === "production") {
+    //Build JS,CSS assets
+    app.use(express.static("client/build"));
+
+    //Build index.html
+    const path = require("path");
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    });
+}
+
 app.listen(process.env.PORT || 5678);

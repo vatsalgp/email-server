@@ -2,7 +2,7 @@ const passport = require("passport");
 const passportGoogle = require("passport-google-oauth20");
 const GoogleStrategy = passportGoogle.Strategy;
 const keys = require("../config/keys");
-const User = require("../models/User");
+const { User } = require("../models/User");
 
 //Convert UserID to cookie
 passport.serializeUser((user, done) => {

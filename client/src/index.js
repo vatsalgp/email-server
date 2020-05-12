@@ -9,7 +9,15 @@ import App from './components/App';
 import reducers from "./reducers";
 import "materialize-css/dist/css/materialize.min.css";
 
-const store = createStore(reducers, applyMiddleware(reduxThunk));
+let store;
+
+if (process.env.NODE_ENV === "production") {
+    store = createStore(reducers, applyMiddleware(reduxThunk));
+} else {
+    const compose = require("compose");
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    store = createStore(reducers, composeEnhancers(applyMiddleware(reduxThunk)));
+}
 
 ReactDOM.render(
     <Provider store={store}>

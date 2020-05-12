@@ -22,7 +22,7 @@ class Header extends React.Component {
     }
 
     renderContent() {
-        switch (this.props.auth) {
+        switch (this.props.auth.isSignedIn) {
             case null:
                 return <li></li>;
             case false:
@@ -36,7 +36,7 @@ class Header extends React.Component {
         return (
             <nav>
                 <div className="nav-wrapper">
-                    <Link to="/" className="left brand-logo">Emaily</Link>
+                    <Link to="/surveys" className="left brand-logo">Emaily</Link>
                     <ul className="right">
                         {this.renderContent()}
                     </ul>
@@ -46,8 +46,4 @@ class Header extends React.Component {
     }
 }
 
-const mapStateToProps = ({ auth }) => {
-    return { auth };
-};
-
-export default connect(mapStateToProps)(Header);
+export default connect(({ auth }) => ({ auth }))(Header);

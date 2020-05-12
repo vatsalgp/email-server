@@ -1,11 +1,15 @@
 // null -> we don't know
-// string -> logged in
+// true -> logged in
 // false -> logged out
 
-const authReducer = (state = null, action) => {
+const INITIAL_STATE = {
+    isSignedIn: null
+};
+
+const authReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case "FETCH_USER":
-            return action.payload || false;
+            return action.payload;
         default:
             return state;
     }

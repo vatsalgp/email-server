@@ -1,11 +1,11 @@
 import React from "react";
 
-const Landing = () => {
+const SurveyField = () => {
     return (
         <div>
-            Landing
+            SurveyField
         </div>
     );
 };
 
-export default Landing;
+export default SurveyField;

@@ -1,6 +1,6 @@
 const sgMail = require('@sendgrid/mail');
-const keys = require("../config/keys");
-const surveyTemplate = require("../emailTemplate/survey");
+const keys = require("../../config/keys");
+const surveyTemplate = require("../../emailTemplate/survey");
 
 sgMail.setApiKey(keys.sendGridKey);
 

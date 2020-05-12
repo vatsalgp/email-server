@@ -1,14 +1,20 @@
+const keys = require("../config/keys");
+const link = keys.redirectDomain + "/api/thankyou";
 module.exports = body =>
     `
-    <div>
-        <div>
-            ${body}
-        </div>
-        <div>
-            <a href="#">Yes</a>
-        </div>
-        <div>
-            <a href="#">No</a>
-        </div>
-    </div>
+    <html>
+        <body>
+            <div style="text-align: center;">
+                <div>
+                    <p>${body}</p>
+                </div>
+                <div>
+                    <a href="${link}">Yes</a>
+                </div>
+                <div>
+                    <a href="${link}">No</a>
+                </div>
+            </div>
+        </body>
+    </html>
     `;

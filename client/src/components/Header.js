@@ -5,6 +5,11 @@ import Payments from "./Payments";
 
 class Header extends React.Component {
 
+    renderLogo() {
+        const link = this.props.auth.isSignedIn ? "/surveys" : "/";
+        return (< Link to={link} className="left brand-logo" > Emaily</Link >);
+    }
+
     renderSignedIn() {
         return (
             <>
@@ -36,7 +41,7 @@ class Header extends React.Component {
         return (
             <nav>
                 <div className="nav-wrapper container">
-                    <Link to="/surveys" className="left brand-logo">Emaily</Link>
+                    {this.renderLogo()}
                     <ul className="right">
                         {this.renderContent()}
                     </ul>

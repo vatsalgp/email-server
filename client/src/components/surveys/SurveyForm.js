@@ -30,4 +30,24 @@ class SurveyForm extends React.Component {
     );
 }
 
-export default reduxForm({ form: "surveyForm" })(SurveyForm);
+//Ran on every Submit
+const validate = ({ title, subject, body, emails }) => {
+    const errors = {};
+
+    if (!title) {
+        errors.title = "You must provide a title";
+    }
+    if (!subject) {
+        errors.subject = "You must provide a subject";
+    }
+    if (!body) {
+        errors.body = "You must provide a body";
+    }
+    if (!emails) {
+        errors.emails = "You must provide atleast one email";
+    }
+
+    return errors;
+};
+
+export default reduxForm({ form: "surveyForm", validate })(SurveyForm);

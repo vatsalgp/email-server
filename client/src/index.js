@@ -11,11 +11,10 @@ import "materialize-css/dist/css/materialize.min.css";
 
 let store;
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production" || !window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) {
     store = createStore(reducers, applyMiddleware(reduxThunk));
 } else {
-    const compose = require("compose");
-    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
     store = createStore(reducers, composeEnhancers(applyMiddleware(reduxThunk)));
 }
 

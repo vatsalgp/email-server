@@ -3,6 +3,7 @@ import { reduxForm, Field } from "redux-form";
 import { Link } from "react-router-dom";
 
 import SurveyField from "./SurveyField";
+import validateEmails from "../../utils/validateEmails";
 
 class SurveyForm extends React.Component {
 
@@ -43,9 +44,8 @@ const validate = ({ title, subject, body, emails }) => {
     if (!body) {
         errors.body = "You must provide a body";
     }
-    if (!emails) {
-        errors.emails = "You must provide atleast one email";
-    }
+
+    errors.emails = validateEmails(emails);
 
     return errors;
 };

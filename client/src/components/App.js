@@ -1,11 +1,13 @@
 import React from 'react';
-import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchUser } from "../actions"
+import { Router, Route } from "react-router-dom";
+
+import history from "../history";
 import Header from "./Header";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
 import SurveyNew from "./surveys/SurveyNew";
+import { fetchUser } from "../actions"
 
 class App extends React.Component {
 
@@ -15,7 +17,7 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<BrowserRouter>
+			<Router history={history}>
 				<div>
 					<Header />
 					<div className="container">
@@ -24,7 +26,7 @@ class App extends React.Component {
 						<Route exact path="/surveys/new" component={SurveyNew} />
 					</div>
 				</div>
-			</BrowserRouter>
+			</Router>
 		);
 	}
 }

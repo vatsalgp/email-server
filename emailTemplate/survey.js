@@ -6,13 +6,13 @@ module.exports = body =>
         <body>
             <div style="text-align: center;">
                 <div>
-                    <p>${body}</p>
+                    <h2>${body}</h2>
                 </div>
                 <div>
-                    <a href="${link}">Yes</a>
+                    <a href="${link}" style="font-size:200%;" >Yes</a>
                 </div>
                 <div>
-                    <a href="${link}">No</a>
+                    <a href="${link}" style="font-size:200%;" >No</a>
                 </div>
             </div>
         </body>

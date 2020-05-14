@@ -6,7 +6,7 @@ const createSurvey = async (req, res) => {
         let { title, body, subject, recipients } = req.body;
         recipients = recipients.split(",").map(email => email.trim());
         if (req.user.credits < recipients.length) {
-            res.send("Insufficient amount of credits");
+            res.status(422).send("Insufficient amount of credits");
         } else {
             const survey = new Survey({
                 title,
@@ -25,7 +25,7 @@ const createSurvey = async (req, res) => {
                 const user = await req.user.save();
                 res.send(user);
             } else {
-                res.send(false);
+                res.status(422).send("Unable to send emails");
             }
         }
     }

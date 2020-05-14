@@ -1,6 +1,6 @@
 import React from "react";
 
-const SurveyField = ({ input, meta: { error, touched }, type, label }) => {
+const SurveyField = ({ input, meta: { error, touched }, type, label, placeholder }) => {
     let textErr = "", inputErr = {};
     if (error && touched) {
         textErr = "red-text"
@@ -16,6 +16,7 @@ const SurveyField = ({ input, meta: { error, touched }, type, label }) => {
                 id={input.name}
                 type={type}
                 style={inputErr}
+                placeholder={placeholder}
             />
             <div className={textErr}>{touched ? error : ""}</div>
         </div>

@@ -1,4 +1,23 @@
 import axios from "axios";
+import history from "../history";
+
+export const submitSurvey = values => async dispatch => {
+    history.push("/surveys");
+    let response;
+    try {
+        response = await axios.post("/api/surveys", values);
+        dispatch({
+            type: "FETCH_USER",
+            payload: response.data
+        });
+    } catch (error) {
+        console.log(error);
+        dispatch({
+            type: "ERROR",
+            payload: error
+        });
+    }
+};
 
 export const fetchUser = () => async dispatch => {
     try {

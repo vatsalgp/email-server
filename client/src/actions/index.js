@@ -1,6 +1,14 @@
 import axios from "axios";
 import history from "../history";
 
+export const fetchSurveys = () => async dispatch => {
+    const response = await axios.get("/api/surveys");
+    dispatch({
+        type: "FETCH_SURVEYS",
+        payload: response.data
+    });
+};
+
 export const submitSurvey = values => async dispatch => {
     history.push("/surveys");
     let response;

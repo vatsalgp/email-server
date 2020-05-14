@@ -4,6 +4,6 @@ const surveyInput = require("../services/survey/surveyInput")
 
 module.exports = app => {
     app.post("/api/webhooks", surveyInput);
-    app.get("/api/thankyou", (req, res) => res.send("Thanks for voting !"));
+    app.get("/api/thankyou/:id/:ans", (req, res) => res.send("Thanks for voting !"));
     app.post("/api/surveys", requireLogin, createSurvey);
 };

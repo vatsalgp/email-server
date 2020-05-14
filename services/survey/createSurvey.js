@@ -16,8 +16,8 @@ const createSurvey = async (req, res) => {
                 dateSent: Date.now(),
                 recipients: recipients.map(email => ({ email }))
             });
-
-            const response = await sendSurvey({ body, subject, recipients });
+            const { id } = survey;
+            const response = await sendSurvey({ body, subject, recipients, id });
 
             if (response) {
                 survey.save();

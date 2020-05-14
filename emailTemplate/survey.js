@@ -1,6 +1,6 @@
 const keys = require("../config/keys");
-const link = keys.redirectDomain + "/api/thankyou";
-module.exports = body =>
+
+module.exports = (body, id) =>
     `
     <html>
         <body>
@@ -9,10 +9,10 @@ module.exports = body =>
                     <h2>${body}</h2>
                 </div>
                 <div>
-                    <a href="${link}" style="font-size:200%;" >Yes</a>
+                    <a href="${keys.redirectDomain}/api/thankyou/${id}/yes" style="font-size:200%;" >Yes</a>
                 </div>
                 <div>
-                    <a href="${link}" style="font-size:200%;" >No</a>
+                    <a href="${keys.redirectDomain}/api/thankyou/${id}/no" style="font-size:200%;" >No</a>
                 </div>
             </div>
         </body>

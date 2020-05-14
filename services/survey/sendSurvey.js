@@ -4,13 +4,13 @@ const surveyTemplate = require("../../emailTemplate/survey");
 
 sgMail.setApiKey(keys.sendGridKey);
 
-const sendServey = async ({ body, subject, recipients }) => {
+const sendServey = async ({ body, subject, recipients, id }) => {
     try {
         await sgMail.sendMultiple({
             subject,
             to: recipients,
             from: 'Emaily Service <emaily.company@gmail.com>',
-            html: surveyTemplate(body),
+            html: surveyTemplate(body, id),
         });
         return true;
     } catch (error) {

@@ -40,7 +40,7 @@ class Header extends React.Component {
     render() {
         return (
             <nav>
-                <div className="nav-wrapper container">
+                <div className="nav-wrapper">
                     {this.renderLogo()}
                     <ul className="right">
                         {this.renderContent()}

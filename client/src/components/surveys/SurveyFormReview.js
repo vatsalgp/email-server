@@ -5,6 +5,13 @@ import FIELDS from "./formFields";
 import { submitSurvey } from "../../actions";
 
 const SurveyFormReview = ({ onCancel, values, submitSurvey }) => {
+    let submitted = false;
+    const onSubmit = () => {
+        if (!submitted) {
+            submitted = true;
+            submitSurvey(values);
+        }
+    };
     const renderFields = () => (
         FIELDS.map(({ name, label }) => (
             <div key={name}>
@@ -19,7 +26,7 @@ const SurveyFormReview = ({ onCancel, values, submitSurvey }) => {
             <button className="yellow darken-3 white-text btn-flat" onClick={onCancel} >
                 Back
             </button>
-            <button className="green btn-flat right white-text" onClick={() => submitSurvey(values)} >
+            <button className="green btn-flat right white-text" onClick={onSubmit} >
                 Send Survey
             </button>
         </div>

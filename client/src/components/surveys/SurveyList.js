@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchSurveys } from "../../actions";
 
@@ -9,7 +10,7 @@ class SurveyList extends React.Component {
     renderSurveys = () => this.props.surveys.reverse().map(survey => (
         <div className="card darken-1" key={survey._id} >
             <div className="card-content">
-                <span className="card-title">{survey.title}</span>
+                <Link to={`/surveys/${survey._id}`} className="card-title">{survey.title}</Link>
                 <p>{survey.body}</p>
                 <p className="right">
                     Sent On: {new Date(survey.dateSent).toLocaleDateString()}

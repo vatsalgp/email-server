@@ -35,8 +35,19 @@ class SurveyShow extends React.Component {
                 </div>
             )
         }));
+    renderBar = progress => (
+        < div className="progress" style={{ height: "20px" }}>
+            <div className="determinate" style={{ width: `${progress}%`, height: "200%" }} />
+        </div >
+    );
     renderExtraFields() {
-        const { lastResponded } = this.state.survey;
+        const { lastResponded, yes, no } = this.state.survey;
+        let y = 50, n = 50;
+
+        if (yes !== no) {
+            y = Math.floor(98 * yes / (yes + no)) + 1;
+            n = Math.floor(98 * no / (yes + no)) + 1;
+        }
         return (
             <div>
                 <div>
@@ -49,11 +60,11 @@ class SurveyShow extends React.Component {
                 </div>
                 <div>
                     <label>Yes:</label>
-                    <div>{this.state.survey.yes}</div>
+                    {this.renderBar(y)}
                 </div>
                 <div>
                     <label>No:</label>
-                    <div>{this.state.survey.no}</div>
+                    {this.renderBar(n)}
                 </div>
             </div>
         );

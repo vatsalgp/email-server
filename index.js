@@ -10,16 +10,16 @@ const app = express();
 
 //Mongoose Setup
 const mongoOptions = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useCreateIndex: true
 };
 mongoose.connect(keys.mongoURI, mongoOptions);
 
 //App Setup
 const cookieOptions = {
-    maxAge: 30 * 24 * 60 * 60 * 1000, //30 days in milliseconds
-    keys: [keys.cookieKey]
+	maxAge: 30 * 24 * 60 * 60 * 1000, //30 days in milliseconds
+	keys: [ keys.cookieKey ]
 };
 
 //Middlewares
@@ -33,14 +33,14 @@ app.use(passport.session());
 router(app);
 
 if (process.env.NODE_ENV === "production") {
-    //Build JS,CSS assets
-    app.use(express.static("client/build"));
+	//Build JS,CSS assets
+	app.use(express.static("client/build"));
 
-    //Build index.html
-    const path = require("path");
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-    });
+	//Build index.html
+	const path = require("path");
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+	});
 }
 
 app.listen(process.env.PORT || 5678);

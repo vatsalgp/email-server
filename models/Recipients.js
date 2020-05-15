@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 //Create a schema
 const recipientSchema = new mongoose.Schema({
-    email: String,
-    responded: { type: Boolean, default: false }
+	email: String,
+	responded: { type: Boolean, default: false }
 });
 
 //Create a collection / Model Class

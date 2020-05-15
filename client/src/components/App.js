@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { connect } from "react-redux";
 import { Router, Route, Switch } from "react-router-dom";
 
@@ -8,10 +8,9 @@ import Landing from "./Landing";
 import Dashboard from "./Dashboard";
 import SurveyNew from "./surveys/SurveyNew";
 import SurveyShow from "./surveys/SurveyShow";
-import { fetchUser } from "../actions"
+import { fetchUser } from "../actions";
 
 class App extends React.Component {
-
 	componentDidMount() {
 		this.props.fetchUser();
 	}

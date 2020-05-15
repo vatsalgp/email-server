@@ -1,7 +1,7 @@
 const keys = require("../config/keys");
 
 module.exports = (body, id) =>
-    `
+	`
     <html>
         <body>
             <div style="text-align: center;">

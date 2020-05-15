@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 //Create a schema
 const userSchema = new mongoose.Schema({
-    googleId: String,
-    credits: {
-        type: Number,
-        default: 0
-    }
+	googleId: String,
+	credits: {
+		type: Number,
+		default: 0
+	}
 });
 
 //Create a collection / Model Class

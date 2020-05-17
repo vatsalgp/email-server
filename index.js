@@ -10,16 +10,16 @@ const app = express();
 
 //Mongoose Setup
 const mongoOptions = {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-	useCreateIndex: true
+	useNewUrlParser    : true,
+	useUnifiedTopology : true,
+	useCreateIndex     : true
 };
 mongoose.connect(keys.mongoURI, mongoOptions);
 
 //App Setup
 const cookieOptions = {
-	maxAge: 30 * 24 * 60 * 60 * 1000, //30 days in milliseconds
-	keys: [ keys.cookieKey ]
+	maxAge : 30 * 24 * 60 * 60 * 1000, //30 days in milliseconds
+	keys   : [ keys.cookieKey ]
 };
 
 //Middlewares

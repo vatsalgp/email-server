@@ -8,13 +8,12 @@ const sendServey = async ({ body, subject, recipients, id }) => {
 	try {
 		await sgMail.sendMultiple({
 			subject,
-			to: recipients,
-			from: "Emaily Service <emaily.company@gmail.com>",
-			html: surveyTemplate(body, id)
+			to      : recipients,
+			from    : "Emaily Service <emaily.company@gmail.com>",
+			html    : surveyTemplate(body, id)
 		});
 		return true;
 	} catch (error) {
-		console.error(error);
 		return false;
 	}
 };

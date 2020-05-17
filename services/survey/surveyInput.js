@@ -13,26 +13,16 @@ module.exports = (req, res) => {
 		if (match) return { ...match, email };
 		else return false;
 	});
-	events = events.filter((event) => event);
+	events = events.filter(event => event);
 	events.forEach(({ email, surveyId, response }) => {
-		console.log(email, surveyId, response);
-		Survey.updateOne(
-			{
-				_id: surveyId,
-				recipients: {
-					$elemMatch: {
-						email,
-						responded: false
-					}
-				}
-			},
-			{
-				$inc: { [response]: 1 },
-				$set: {
-					"recipients.$.responded": true,
-					lastResponded: Date.now()
-				}
-			}
-		).exec();
+		const find = {
+			_id        : surveyId,
+			recipients : { $elemMatch: { email, responded: false } }
+		};
+		const update = {
+			$inc : { [response]: 1 },
+			$set : { "recipients.$.responded": true, lastResponded: Date.now() }
+		};
+		Survey.updateOne(find, update).exec();
 	});
 };

@@ -20,7 +20,7 @@ class Header extends React.Component {
                     Credits: {this.props.auth.credits}
                 </li>
                 <li>
-                    <a href="/api/logout">Log Out</a>
+                    <a className="btn" href="/api/logout">Log Out</a>
                 </li>
             </>
         );
@@ -31,7 +31,7 @@ class Header extends React.Component {
             case null:
                 return <li></li>;
             case false:
-                return <li><a href="/auth/google">Login with Google</a></li>;
+                return <li><a className="btn red" href="/auth/google">Login with Google</a></li>;
             default:
                 return this.renderSignedIn();
         }

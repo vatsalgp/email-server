@@ -2,8 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
-const cookieSession = require("cookie-session");
+const enforce = require("express-sslify");
 const passport = require("passport");
+const cookieSession = require("cookie-session");
 const keys = require("./config/keys");
 const router = require("./routes");
 const app = express();
@@ -23,6 +24,7 @@ const cookieOptions = {
 };
 
 //Middlewares
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(morgan("combined")); // For logging requests
 app.use(bodyParser.json({ type: "*/*" })); //For req.body
 app.use(cookieSession(cookieOptions));

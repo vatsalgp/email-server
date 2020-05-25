@@ -20,7 +20,7 @@ class Header extends React.Component {
                     Credits: {this.props.auth.credits}
                 </li>
                 <li>
-                    <a className="btn" href="/api/logout">Log Out</a>
+                    <a style={{ margin: "0" }} className="btn" href="/api/logout">Log Out</a>
                 </li>
             </>
         );
